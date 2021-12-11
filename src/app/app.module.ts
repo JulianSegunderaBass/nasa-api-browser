@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { ApodComponent } from './apod/apod.component';
 import { RoverComponent } from './mars-rover/rover.component';
 import { AppHeaderComponent } from './header.component';
+import { ApodDetailComponent } from './apod/apod-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ApodComponent,
+    ApodDetailComponent,
     RoverComponent,
     AppHeaderComponent
   ],

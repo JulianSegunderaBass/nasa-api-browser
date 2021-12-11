@@ -1,3 +1,14 @@
+/* 
+--Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+--Whitespace Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+--Font weights
+Default: 400
+Medium: 500
+Semi-Bold: 600
+Bold: 700 
+*/
 * {
   padding: 0;
   margin: 0;
@@ -6,4 +17,52 @@
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  padding: 2.4rem 3.2rem;
+}
+/* ? Navigation */
+.navigation {
+  display: flex;
+  gap: 2.4rem;
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+}
+.navigation a, navigation a:visited {
+  text-decoration: none;
+  color: #000;
+}
+.navigation a.active {
+  font-weight: 600;
+}
+/* ? APOD Tab */
+.apod-container {
+  margin-top: 1.6rem;
+  display: flex;
+  gap: 2rem;
+}
+.apod-list {
+  padding: 1.2rem 0;
+  font-size: 1.4rem;
+}
+apod-detail {
+  padding: 1.2rem 0.8rem;
+  font-size: 1.6rem;
+}
+.apod-card {
+  border: 1px solid #000;
+  margin-bottom: 0.8rem;
+  padding: 1.2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.apod-card-title {
+  font-weight: 600;
+}
+apod-detail {
+  border: 1px solid #000;
+  width: 100%;
 }

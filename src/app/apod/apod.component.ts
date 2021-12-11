@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { APOD } from './apod.interface';
 
 // Properties to consider:
 // - copyright
@@ -15,13 +16,13 @@ import { ApiService } from '../api.service';
     <h2>APOD Browser</h2>
     <div class="apod-container" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="apod-list">
-        <div class="apod-card" *ngFor="let apod of apodData">
+        <div class="apod-card" *ngFor="let apod of apodData" (click)="setActiveApod(apod)">
           <p class="apod-card-title">{{apod['id']}} : {{apod['title']}}</p>
           <p>{{apod['copyright']}}</p>
           <p>{{apod['date']}}</p>
         </div>
       </div>
-      <apod-detail></apod-detail>
+      <apod-detail [apod]="activeApod"></apod-detail>
     </div>
     <ng-template #dataNotLoaded>Loading data...</ng-template>
   `,
@@ -30,7 +31,8 @@ import { ApiService } from '../api.service';
   `]
 })
 export class ApodComponent implements OnInit {
-  apodData: [] = [];
+  apodData: APOD[] = [];
+  activeApod!: APOD;
   dataLoaded: boolean = false;
 
   constructor(
@@ -47,5 +49,9 @@ export class ApodComponent implements OnInit {
         this.apodData = data;
         this.dataLoaded = true;
       });
+  }
+
+  setActiveApod(apod: APOD) {
+    this.activeApod = apod;
   }
 }

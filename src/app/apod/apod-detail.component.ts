@@ -14,7 +14,7 @@ import { APOD } from './apod.interface';
         <div class="apod-info">
           <p class="apod-info-title">{{apod.title}}, {{apod.date | date:'longDate'}}</p>
           <p class="apod-info-copyright">Copyright: {{apod.copyright}}</p>
-          <p>{{apod.explanation}}</p>
+          <p class="apod-info-explanation">{{apod.explanation}}</p>
         </div>
       </div>
     </div>

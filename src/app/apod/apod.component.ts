@@ -13,8 +13,11 @@ import { APOD } from './apod.interface';
 @Component({
   selector: 'apod-browser',
   template: `
-    <h2>APOD Browser</h2>
-    <input type="number" min="1" [(ngModel)]="apodCount" (input)="onApodCountChanged()">
+    <h2>Astronomy Picture of the Day | APOD</h2>
+    <div class="apod-input">
+      <label for="apod-count-input">APOD display count: </label>
+      <input type="number" class="apod-count-input" id="apod-count-input" min="1" [(ngModel)]="apodCount" (input)="onApodCountChanged()">
+    </div>
     <div class="apod-container" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="apod-list">
         <div class="apod-card" *ngFor="let apod of apodData" [routerLink]="[apod.id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -25,7 +28,9 @@ import { APOD } from './apod.interface';
       </div>
       <router-outlet></router-outlet>
     </div>
-    <ng-template #dataNotLoaded>Loading data...</ng-template>
+    <ng-template #dataNotLoaded>
+      <p class="loading-placeholder">Loading data...</p>
+    </ng-template>
   `,
   styles: [`
   

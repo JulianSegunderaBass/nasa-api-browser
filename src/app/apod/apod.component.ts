@@ -16,13 +16,13 @@ import { APOD } from './apod.interface';
     <h2>APOD Browser</h2>
     <div class="apod-container" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="apod-list">
-        <div class="apod-card" *ngFor="let apod of apodData" (click)="setActiveApod(apod)">
-          <p class="apod-card-title">{{apod['id']}} : {{apod['title']}}</p>
-          <p>{{apod['copyright']}}</p>
-          <p>{{apod['date']}}</p>
+        <div class="apod-card" *ngFor="let apod of apodData" [routerLink]="[apod.id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <p class="apod-card-title">{{apod.id}} : {{apod.title}}</p>
+          <p>{{apod.copyright}}</p>
+          <p>{{apod.date}}</p>
         </div>
       </div>
-      <apod-detail [apod]="activeApod"></apod-detail>
+      <router-outlet></router-outlet>
     </div>
     <ng-template #dataNotLoaded>Loading data...</ng-template>
   `,
@@ -31,8 +31,7 @@ import { APOD } from './apod.interface';
   `]
 })
 export class ApodComponent implements OnInit {
-  apodData: APOD[] = [];
-  activeApod!: APOD;
+  apodData?: APOD[];
   dataLoaded: boolean = false;
 
   constructor(
@@ -49,9 +48,5 @@ export class ApodComponent implements OnInit {
         this.apodData = data;
         this.dataLoaded = true;
       });
-  }
-
-  setActiveApod(apod: APOD) {
-    this.activeApod = apod;
   }
 }

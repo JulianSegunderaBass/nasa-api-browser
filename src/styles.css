@@ -61,7 +61,26 @@ apod-detail {
 .apod-card-title {
   font-weight: 600;
 }
+.apod-card.active .apod-card-title {
+  color: blue;
+}
 apod-detail {
   border: 1px solid #000;
   width: 100%;
+}
+.apod-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.apod-img {
+  width: 100%;
+  object-fit: cover;
+}
+.apod-info-title {
+  font-weight: 600;
+}
+.apod-info-copyright {
+  font-style: italic;
+  margin-bottom: 1rem;
 }

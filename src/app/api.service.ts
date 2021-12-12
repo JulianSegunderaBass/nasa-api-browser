@@ -38,6 +38,6 @@ export class ApiService {
   }
 
   getApod(index: number) {
-    return this.apodData.slice()[index];
+    return this.apodData.slice()[index - 1];
   }
 }

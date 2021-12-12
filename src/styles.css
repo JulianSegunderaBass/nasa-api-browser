@@ -41,9 +41,12 @@ body {
   margin-top: 1.6rem;
   display: flex;
   gap: 2rem;
+  height: 75vh;
 }
 .apod-list {
   font-size: 1.4rem;
+  height: 100%;
+  overflow-y: auto;
 }
 apod-detail {
   padding: 1.2rem 0.8rem;

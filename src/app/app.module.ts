@@ -8,6 +8,7 @@ import { ApodComponent } from './apod/apod.component';
 import { RoverComponent } from './mars-rover/rover.component';
 import { AppHeaderComponent } from './header.component';
 import { ApodDetailComponent } from './apod/apod-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ApodDetailComponent } from './apod/apod-detail.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],

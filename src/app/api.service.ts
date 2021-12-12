@@ -18,9 +18,9 @@ export class ApiService {
     private http: HttpClient,
   ) { }
 
-  getApodData(): Observable<[]> {
+  getApodData(apodCount: number): Observable<[]> {
     let startDate: Date = new Date();
-    startDate.setDate(startDate.getDate() - 5);
+    startDate.setDate(startDate.getDate() - (apodCount - 1));
     return this.http
       .get<any>(`${this.apodURL}&start_date=${startDate.toISOString().split('T')[0]}`)
       // Transforming fetched data

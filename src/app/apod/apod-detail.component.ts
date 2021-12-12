@@ -12,7 +12,7 @@ import { APOD } from './apod.interface';
           <img [src]="apod.url" class="apod-img">
         </div>
         <div class="apod-info">
-          <p class="apod-info-title">{{apod.title}}, {{apod.date}}</p>
+          <p class="apod-info-title">{{apod.title}}, {{apod.date | date:'longDate'}}</p>
           <p class="apod-info-copyright">Copyright: {{apod.copyright}}</p>
           <p>{{apod.explanation}}</p>
         </div>

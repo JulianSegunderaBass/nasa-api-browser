@@ -18,11 +18,9 @@ export class ApiService {
     private http: HttpClient,
   ) { }
 
-  getApodData(apodCount: number): Observable<[]> {
-    let startDate: Date = new Date();
-    startDate.setDate(startDate.getDate() - (apodCount - 1));
+  getApodData(startDate: string, endDate: string): Observable<[]> {
     return this.http
-      .get<any>(`${this.apodURL}&start_date=${startDate.toISOString().split('T')[0]}`)
+      .get<any>(`${this.apodURL}&start_date=${startDate}&end_date=${endDate}`)
       // Transforming fetched data
       .pipe(
         map(apods => {

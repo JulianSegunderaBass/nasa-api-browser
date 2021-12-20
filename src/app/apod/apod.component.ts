@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { APOD } from './apod.interface';
 
@@ -14,10 +15,14 @@ import { APOD } from './apod.interface';
   selector: 'apod-browser',
   template: `
     <h2>Astronomy Picture of the Day | APOD</h2>
-    <div class="apod-input">
-      <label for="apod-count-input">APOD display count: </label>
-      <input type="number" class="apod-count-input" id="apod-count-input" min="1" [(ngModel)]="apodCount" (input)="onApodCountChanged()">
-    </div>
+    <form class="apod-input" [formGroup]="dateFilter">
+      <label for="apod-date-start">From: </label>
+      <input type="date" class="apod-date-input" id="apod-date-start" formControlName="apodDateStart">
+      <label for="apod-date-end">To: </label>
+      <input type="date" class="apod-date-input" id="apod-date-end" formControlName="apodDateEnd">
+      <button class="btn" (click)="clearFilter()">Reset</button>
+      <button type="submit" class="btn" (click)="onDateFilter()">Filter</button>
+    </form>
     <div class="apod-container" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="apod-list">
         <div class="apod-card" *ngFor="let apod of apodData" [routerLink]="[apod.id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -38,30 +43,40 @@ import { APOD } from './apod.interface';
 })
 export class ApodComponent implements OnInit {
   apodData?: APOD[];
-  apodCount: number = 8;
   dataLoaded: boolean = false;
+  dateFilter!: FormGroup;
 
   constructor(
     private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
-    this.getApodData(this.apodCount);
+    let today = new Date();
+    // Initializing form
+    this.dateFilter = new FormGroup({
+      'apodDateStart': new FormControl(null),
+      'apodDateEnd': new FormControl(`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`)
+    });
+    this.clearFilter()
   }
 
-  getApodData(apodCount: number): void {
-    this.apiService.getApodData(apodCount)
+  getApodData(start: string, end: string): void {
+    this.dataLoaded = false;
+    this.apiService.getApodData(start, end)
       .subscribe(data => {
         this.apodData = data;
         this.dataLoaded = true;
       });
   }
 
-  onApodCountChanged() {
-    // Timeout function before calling api
-    this.dataLoaded = false;
-    setTimeout(() => { 
-      this.getApodData(this.apodCount);
-    }, 2000);
+  onDateFilter() {
+    this.getApodData(this.dateFilter.value.apodDateStart, this.dateFilter.value.apodDateEnd);
+  }
+
+  clearFilter() {
+    let today = new Date();
+    let start = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate() - 8}`;
+    let end = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    this.getApodData(start, end);
   }
 }

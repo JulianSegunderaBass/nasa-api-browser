@@ -182,6 +182,31 @@ apod-detail {
   overflow-y: auto;
   padding-right: 0.8rem;
 }
+/* ? Mars Rover Tab */
+rover-detail {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  width: 60%;
+  height: 90%;
+  background: var(--background-black);
+  border: 2px solid var(--font-green);
+  z-index: 10;
+}
+.rover-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 2%;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
 /* ? Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;

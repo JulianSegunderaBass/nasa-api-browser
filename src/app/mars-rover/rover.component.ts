@@ -5,6 +5,7 @@ import { ApiService } from '../api.service';
   selector: 'rover-browser',
   template: `
     <h2>Mars Rover Browser</h2>
+    <router-outlet></router-outlet>
   `,
   styles: [`
     

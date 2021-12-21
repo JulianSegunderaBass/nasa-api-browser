@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { APOD } from './apod.interface';
 
@@ -21,7 +21,7 @@ import { APOD } from './apod.interface';
       <label for="apod-date-end">To: </label>
       <input type="date" class="apod-date-input" id="apod-date-end" formControlName="apodDateEnd">
       <button class="btn" (click)="clearFilter()">Reset</button>
-      <button type="submit" class="btn" (click)="onDateFilter()">Filter</button>
+      <button type="submit" class="btn" [disabled]="!dateFilter.valid" (click)="onDateFilter()">Filter</button>
     </form>
     <div class="apod-container" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="apod-list">
@@ -54,8 +54,8 @@ export class ApodComponent implements OnInit {
     let today = new Date();
     // Initializing form
     this.dateFilter = new FormGroup({
-      'apodDateStart': new FormControl(null),
-      'apodDateEnd': new FormControl(`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`)
+      'apodDateStart': new FormControl(null, Validators.required),
+      'apodDateEnd': new FormControl(`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`, Validators.required)
     });
     this.clearFilter()
   }

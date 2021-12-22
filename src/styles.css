@@ -71,6 +71,33 @@ p {
   background: transparent;
   color: var(--font-green);
 }
+.btn-group {
+  display: flex;
+  gap: 0.8rem;
+}
+.filter-form {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  font-size: 1.8rem;
+}
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.filter-input {
+  width: 18rem;
+  font-size: 1.8rem;
+  padding: 0.2rem 0.4rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--font-green);
+  color: var(--font-green);
+}
+.filter-input.ng-invalid.ng-touched {
+  border-bottom: 2px solid #c92a2a;
+}
 ::selection {
   color: var(--background-black);
   background: var(--font-green-lighter);
@@ -99,33 +126,6 @@ p {
   display: flex;
   gap: 2rem;
   height: 70vh;
-}
-.apod-input {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.8rem;
-}
-.apod-count-input {
- width: 5rem;
- font-size: 1.8rem;
- padding: 0.2rem 0.4rem;
- background-color: transparent;
- border: none;
- border-bottom: 2px solid var(--font-green);
- color: var(--font-green);
-}
-.apod-date-input {
-  width: 18rem;
-  font-size: 1.8rem;
-  padding: 0.2rem 0.4rem;
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid var(--font-green);
-  color: var(--font-green);
-}
-.apod-date-input.ng-invalid.ng-touched {
-  border-bottom: 2px solid #c92a2a;
 }
 .apod-list {
   font-size: 1.4rem;
@@ -183,6 +183,18 @@ apod-detail {
   padding-right: 0.8rem;
 }
 /* ? Mars Rover Tab */
+.rover-img-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+.rover-img-card {
+  width: 100%;
+}
+.rover-img {
+  max-width: 100%;
+  max-height: 100%;
+}
 rover-detail {
   position: absolute;
   top: 5%;
@@ -193,7 +205,7 @@ rover-detail {
   border: 2px solid var(--font-green);
   z-index: 10;
 }
-.rover-img {
+.rover-modal-img {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;

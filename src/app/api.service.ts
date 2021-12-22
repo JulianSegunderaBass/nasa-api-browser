@@ -10,7 +10,7 @@ import { APOD } from './apod/apod.interface';
 export class ApiService {
   private apiKey = 'DEMO_KEY';
   private apodURL = `https://api.nasa.gov/planetary/apod?api_key=${this.apiKey}`;
-  private marsRoverURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?`
+  private marsRoverURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/`
 
   // API Data
   private apodData: [] = [];
@@ -40,8 +40,8 @@ export class ApiService {
     return this.apodData.slice()[index - 1];
   }
 
-  getRoverData(captureDate: string) {
+  getRoverData(captureDate: string, rover: string) {
     return this.http
-      .get<any>(`${this.marsRoverURL}${captureDate}&${this.apiKey}`);
+      .get<any>(`${this.marsRoverURL}${rover}/photos?api_key=${this.apiKey}&earth_date=${captureDate}`);
   }
 }

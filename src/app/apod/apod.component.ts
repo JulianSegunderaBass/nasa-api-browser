@@ -15,13 +15,19 @@ import { APOD } from './apod.interface';
   selector: 'apod-browser',
   template: `
     <h2>Astronomy Picture of the Day | APOD</h2>
-    <form class="apod-input" [formGroup]="dateFilter">
-      <label for="apod-date-start">From: </label>
-      <input type="date" class="apod-date-input" id="apod-date-start" formControlName="apodDateStart">
-      <label for="apod-date-end">To: </label>
-      <input type="date" class="apod-date-input" id="apod-date-end" formControlName="apodDateEnd">
-      <button class="btn" (click)="clearFilter()">Reset</button>
-      <button type="submit" class="btn" [disabled]="!dateFilter.valid" (click)="onDateFilter()">Filter</button>
+    <form class="filter-form" [formGroup]="dateFilter">
+      <div class="form-group">
+        <label for="apod-date-start">From: </label>
+        <input type="date" class="filter-input" id="apod-date-start" formControlName="apodDateStart">
+      </div>
+      <div class="form-group">
+        <label for="apod-date-end">To: </label>
+        <input type="date" class="filter-input" id="apod-date-end" formControlName="apodDateEnd">
+      </div>
+      <div class="btn-group">
+        <button class="btn" (click)="clearFilter()">Reset</button>
+        <button type="submit" class="btn" [disabled]="!dateFilter.valid" (click)="onDateFilter()">Filter</button>
+      </div>
     </form>
     <div class="apod-container" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="apod-list">

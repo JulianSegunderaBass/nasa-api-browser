@@ -42,7 +42,7 @@ import { roverImg } from './rover-img.interface';
     </form>
     <div class="rover-img-grid" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="rover-img-card" *ngFor="let roverImg of roverData">
-        <img [src]="roverImg.img_src" class="rover-img" [routerLink]="[roverImg.id, 'full']">
+        <img [src]="roverImg.img_src" class="rover-img" [routerLink]="[roverImg.id, 'full']" [queryParams]="{ view: 'rover-img' }">
       </div>
       <router-outlet></router-outlet>
     </div>

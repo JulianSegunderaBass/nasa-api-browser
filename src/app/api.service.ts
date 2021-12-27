@@ -15,6 +15,7 @@ export class ApiService {
 
   // API Data
   private apodData: [] = [];
+  private roverData: [] = [];
 
   constructor(
     private http: HttpClient,
@@ -34,15 +35,33 @@ export class ApiService {
         }),
         tap(apods => {
           this.apodData = apods;
-        }));
+        })
+      );
+  }
+
+  getRoverData(captureDate: string, rover: string) {
+    return this.http
+      .get<any>(`${this.marsRoverURL}${rover}/photos?api_key=${this.apiKey}&earth_date=${captureDate}&page=1`)
+      .pipe(
+        tap(roverData => {
+          this.roverData = roverData.photos;
+        })
+      );
   }
 
   getApod(index: number) {
     return this.apodData.slice()[index - 1];
   }
 
-  getRoverData(captureDate: string, rover: string) {
-    return this.http
-      .get<any>(`${this.marsRoverURL}${rover}/photos?api_key=${this.apiKey}&earth_date=${captureDate}&page=1`);
+  getDetailedImage(id: number, viewMode: string): string {
+    if (viewMode === 'apod-img') {
+      let targetData = this.apodData.filter((apod: APOD) => apod.id === id);
+      return (targetData[0])['url'];
+    } else if (viewMode === 'rover-img') {
+      let targetData = this.roverData.filter((rover: roverImg) => rover.id === id);
+      return (targetData[0])['img_src'];
+    }
+    // TODO: Edit this final return statement
+    return 'placeholder';
   }
 }

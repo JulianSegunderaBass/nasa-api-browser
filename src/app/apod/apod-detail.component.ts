@@ -9,7 +9,7 @@ import { APOD } from './apod.interface';
     <div *ngIf="apod; else apodNotSelected">
       <div class="apod-details">
         <div class="apod-img-container">
-          <img [src]="apod.url" class="apod-img" [routerLink]="['full']">
+          <img [src]="apod.url" class="apod-img" [routerLink]="[apod.id, 'full']" [queryParams]="{ view: 'apod-img' }">
         </div>
         <div class="apod-info">
           <p class="apod-info-title">{{apod.title}}, {{apod.date | date:'longDate'}}</p>

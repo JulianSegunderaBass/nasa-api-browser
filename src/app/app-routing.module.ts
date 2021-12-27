@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/apod', pathMatch: 'full' },
   { path: 'apod', component: ApodComponent, children: [
     { path: ':id', component: ApodDetailComponent, children: [
-      { path: 'full', component: ImageDetailComponent },
+      // TODO: Route improvement for duplicate id param
+      { path: ':id/full', component: ImageDetailComponent },
     ] }
   ] },
   { path: 'mars-rover', component: RoverComponent, children: [

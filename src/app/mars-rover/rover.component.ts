@@ -40,14 +40,14 @@ import { roverImg } from './rover-img.interface';
         <button type="submit" class="btn" [disabled]="!roverFilter.valid" (click)="onRoverFilter()">Filter</button>
       </div>
     </form>
-    <div class="rover-img-container" *ngIf="dataLoaded; else dataNotLoaded">
+    <div class="rover-img-grid" *ngIf="dataLoaded; else dataNotLoaded">
       <div class="rover-img-card" *ngFor="let roverImg of roverData" [routerLink]="[roverImg.id]">
         <img [src]="roverImg.img_src" class="rover-img">
       </div>
       <router-outlet></router-outlet>
     </div>
     <ng-template #dataNotLoaded>
-      <p class="loading-placeholder">Loading data...</p>
+      <p class="loading-placeholder">{{emptyMessage}}</p>
     </ng-template>
   `,
   styles: [`
@@ -55,9 +55,10 @@ import { roverImg } from './rover-img.interface';
   `]
 })
 export class RoverComponent implements OnInit {
-  roverData?: roverImg[];
+  roverData!: roverImg[];
   dataLoaded: boolean = false;
   roverFilter!: FormGroup;
+  emptyMessage: string = "Search some data";
   // curiosityCams: string[] = ['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM'];
   // opportunityCams: string[] = ['FHAZ', 'RHAZ', 'NAVCAM', 'PANCAM', 'MINITES'];
 
@@ -74,11 +75,15 @@ export class RoverComponent implements OnInit {
 
   getRoverData(captureDate: string, rover: string) {
     this.dataLoaded = false;
+    this.emptyMessage = "Loading data...";
     this.apiService.getRoverData(captureDate, rover)
       .subscribe(data => {
-        this.roverData = data;
-        this.dataLoaded = true;
-        console.log(this.roverData);
+        this.roverData = data.photos;
+        if (this.roverData.length > 0) {
+          this.dataLoaded = true;
+        } else {
+          this.emptyMessage = "No data available";
+        }
       });
   }
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { APOD } from './apod/apod.interface';
+import { roverImg } from './mars-rover/rover-img.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,6 @@ export class ApiService {
 
   getRoverData(captureDate: string, rover: string) {
     return this.http
-      .get<any>(`${this.marsRoverURL}${rover}/photos?api_key=${this.apiKey}&earth_date=${captureDate}`);
+      .get<any>(`${this.marsRoverURL}${rover}/photos?api_key=${this.apiKey}&earth_date=${captureDate}&page=1`);
   }
 }

@@ -184,6 +184,11 @@ apod-detail {
 }
 /* ? Mars Rover Tab */
 .rover-img-grid {
+  max-width: 1200px;
+  overflow-y: auto;
+  margin: 1.6rem auto 0 auto;
+  padding-right: 0.5rem;
+  height: 70vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;

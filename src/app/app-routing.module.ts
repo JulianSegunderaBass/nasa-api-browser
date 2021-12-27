@@ -3,15 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { ApodComponent } from './apod/apod.component';
 import { ApodDetailComponent } from './apod/apod-detail.component';
 import { RoverComponent } from './mars-rover/rover.component';
-import { RoverDetailComponent } from './mars-rover/rover-detail.component';
+import { ImageDetailComponent } from './image-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/apod', pathMatch: 'full' },
   { path: 'apod', component: ApodComponent, children: [
-    { path: ':id', component: ApodDetailComponent }
+    { path: ':id', component: ApodDetailComponent, children: [
+      { path: 'full', component: ImageDetailComponent },
+    ] }
   ] },
   { path: 'mars-rover', component: RoverComponent, children: [
-    { path: ':id', component: RoverDetailComponent }
+    { path: ':id/full', component: ImageDetailComponent }
   ] }
 ];
 

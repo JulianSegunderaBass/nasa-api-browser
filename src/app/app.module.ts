@@ -9,7 +9,7 @@ import { RoverComponent } from './mars-rover/rover.component';
 import { AppHeaderComponent } from './header.component';
 import { ApodDetailComponent } from './apod/apod-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RoverDetailComponent } from './mars-rover/rover-detail.component';
+import { ImageDetailComponent } from './image-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { RoverDetailComponent } from './mars-rover/rover-detail.component';
     ApodComponent,
     ApodDetailComponent,
     RoverComponent,
-    RoverDetailComponent,
+    ImageDetailComponent,
     AppHeaderComponent
   ],
   imports: [

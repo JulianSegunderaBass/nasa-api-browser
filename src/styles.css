@@ -95,6 +95,9 @@ p {
   border-bottom: 2px solid var(--font-green);
   color: var(--font-green);
 }
+.filter-input option {
+  background: var(--background-black);
+}
 .filter-input.ng-invalid.ng-touched {
   border-bottom: 2px solid #c92a2a;
 }
@@ -167,15 +170,18 @@ apod-detail {
   gap: 1.5rem;
 }
 .apod-img-container {
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
 }
 .apod-img {
   max-width: 100%;
-  max-height: 100%;
   object-fit: cover;
   display: block;
   margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.apod-img:hover {
+  transform: scale(1.05);
 }
 .apod-info-title {
   font-weight: 600;
@@ -190,22 +196,32 @@ apod-detail {
   padding-right: 0.8rem;
 }
 /* ? Mars Rover Tab */
-.rover-img-grid {
+rover-browser form {
+  margin-bottom: 1.6rem;
+}
+.rover-grid-container {
   max-width: 1200px;
-  overflow-y: auto;
-  margin: 1.6rem auto 0 auto;
-  padding-right: 0.5rem;
   height: 70vh;
+  padding-right: 1rem;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+.rover-img-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
 }
 .rover-img-card {
-  width: 100%;
+  overflow: hidden;
 }
 .rover-img {
-  max-width: 100%;
-  max-height: 100%;
+  display: block;
+  width: 100%;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+.rover-img:hover {
+  transform: scale(1.05);
 }
 /* ? Modal */
 .modal-img-container {
@@ -227,8 +243,8 @@ apod-detail {
   backdrop-filter: blur(0.8rem);
 }
 .modal-img {
-  max-width: 100vw;
-  max-height: 80vh;
+  max-width: 95vw;
+  max-height: 95vh;
 }
 .modal-close {
   position: absolute;

@@ -36,19 +36,20 @@ import { roverImg } from './rover-img.interface';
         </select>
       </div>
       <div class="btn-group">
-        <button class="btn">Reset</button>
         <button type="submit" class="btn" [disabled]="!roverFilter.valid" (click)="onRoverFilter()">Filter</button>
       </div>
     </form>
-    <div class="rover-img-grid" *ngIf="dataLoaded; else dataNotLoaded">
-      <div class="rover-img-card" *ngFor="let roverImg of roverData">
-        <img [src]="roverImg.img_src" class="rover-img" [routerLink]="[roverImg.id, 'full']" [queryParams]="{ view: 'rover-img' }">
+    <div class="rover-grid-container" *ngIf="dataLoaded; else dataNotLoaded">
+      <div class="rover-img-grid">
+        <div class="rover-img-card" *ngFor="let roverImg of roverData">
+          <img [src]="roverImg.img_src" class="rover-img" [routerLink]="[roverImg.id, 'full']" [queryParams]="{ view: 'rover-img' }">
+        </div>
       </div>
-      <router-outlet></router-outlet>
     </div>
     <ng-template #dataNotLoaded>
       <p class="loading-placeholder">{{emptyMessage}}</p>
     </ng-template>
+    <router-outlet></router-outlet>
   `,
   styles: [`
     

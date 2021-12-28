@@ -56,7 +56,7 @@ export class ApiService {
   getDetailedImage(id: number, viewMode: string): string {
     if (viewMode === 'apod-img') {
       let targetData = this.apodData.filter((apod: APOD) => apod.id === id);
-      return (targetData[0])['url'];
+      return (targetData[0])['hdurl'];
     } else if (viewMode === 'rover-img') {
       let targetData = this.roverData.filter((rover: roverImg) => rover.id === id);
       return (targetData[0])['img_src'];

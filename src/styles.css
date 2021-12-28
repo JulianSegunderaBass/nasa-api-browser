@@ -208,24 +208,38 @@ apod-detail {
   max-height: 100%;
 }
 /* ? Modal */
-image-detail {
+.modal-img-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--background-black);
-  border: 2px solid var(--font-green);
+  border: 1px solid var(--font-green);
   z-index: 10;
+  overflow: hidden;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0.8rem);
 }
 .modal-img {
   max-width: 100vw;
   max-height: 80vh;
 }
-.close {
+.modal-close {
   position: absolute;
   top: 0;
-  right: 2%;
+  right: 0;
+  transform: translate(10%, -10%);
   font-size: 1.8rem;
+  padding: 0.4rem 0.8rem;
+  margin: 0;
+  background: var(--font-green);
+  color: var(--background-black);
   cursor: pointer;
 }
 /* ? Scrollbar */

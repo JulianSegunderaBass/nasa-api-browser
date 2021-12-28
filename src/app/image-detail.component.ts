@@ -6,8 +6,11 @@ import { ApiService } from './api.service';
 @Component({
   selector: 'image-detail',
   template: `
-    <img [src]="dataUrl" class="modal-img">
-    <span class="close" (click)="onNavigateBack()">X</span>
+    <div class="modal-img-container">
+      <img [src]="dataUrl" class="modal-img">
+      <span class="modal-close" (click)="onNavigateBack()">&#10006;</span>
+    </div>
+    <div class="modal-overlay" (click)="onNavigateBack()"></div>
   `,
   styles: [`
     

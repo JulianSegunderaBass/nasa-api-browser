@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-header',
   template: `
     <nav class="navigation">
-      <a routerLink="/apod" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">APOD</a>
-      <a routerLink="/mars-rover" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Mars Rover Images</a>
+      <a routerLink="/apod" [ngClass]="{'active': activeLink === 'apod'}" (click)="onSetActiveLink('apod')">APOD</a>
+      <a routerLink="/mars-rover" [ngClass]="{'active': activeLink === 'mars-rover'}" (click)="onSetActiveLink('mars-rover')">Mars Rover Images</a>
     </nav>
   `,
   styles: [`
@@ -13,5 +13,9 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class AppHeaderComponent {
+  activeLink: string = 'apod';
 
+  onSetActiveLink(link: string) {
+    this.activeLink = link;
+  }
 }

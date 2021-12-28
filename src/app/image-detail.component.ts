@@ -6,7 +6,7 @@ import { ApiService } from './api.service';
 @Component({
   selector: 'image-detail',
   template: `
-    <img [src]="dataUrl" class="rover-modal-img">
+    <img [src]="dataUrl" class="modal-img">
     <span class="close" (click)="onNavigateBack()">X</span>
   `,
   styles: [`

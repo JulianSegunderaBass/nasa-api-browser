@@ -12,8 +12,8 @@ Bold: 700
 
 :root {
   --background-black: #212529;
-  --font-green: #69db7c;
-  --font-green-lighter: #b2f2bb;
+  --font-main: #f1f3f5;
+  --font-main-lighter: #f8f9fa;
 }
 * {
   padding: 0;
@@ -28,7 +28,7 @@ body {
   font-family: 'Exo', sans-serif;
   padding: 2.4rem 3.2rem;
   background: var(--background-black);
-  color: var(--font-green);
+  color: var(--font-main);
 }
 h1 {
   font-weight: 700;
@@ -53,13 +53,13 @@ p {
   cursor: pointer;
   font-size: 1.8rem;
   background: transparent;
-  border: 2px solid var(--font-green);
+  border: 2px solid var(--font-main);
   padding: 0.4rem 0.8rem;
-  color: var(--font-green);
+  color: var(--font-main);
   transition: all 0.4s ease;
 }
 .btn:hover {
-  background: var(--font-green);
+  background: var(--font-main);
   color: var(--background-black);
 }
 .btn:disabled {
@@ -69,7 +69,7 @@ p {
 }
 .btn:disabled:hover {
   background: transparent;
-  color: var(--font-green);
+  color: var(--font-main);
 }
 .btn-group {
   display: flex;
@@ -92,8 +92,8 @@ p {
   padding: 0.2rem 0.4rem;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid var(--font-green);
-  color: var(--font-green);
+  border-bottom: 2px solid var(--font-main);
+  color: var(--font-main);
 }
 .filter-input option {
   background: var(--background-black);
@@ -103,7 +103,7 @@ p {
 }
 ::selection {
   color: var(--background-black);
-  background: var(--font-green-lighter);
+  background: var(--font-main-lighter);
 }
 .loading-placeholder {
   font-size: 1.6rem;
@@ -118,15 +118,15 @@ p {
 }
 .navigation a, navigation a:visited {
   text-decoration: none;
-  color: var(--font-green);
+  color: var(--font-main);
   padding: 0.8rem 1.2rem;
   transition: all 0.4s ease;
 }
 .navigation a:hover {
-  box-shadow: inset 0 0 0 1px var(--font-green);
+  box-shadow: inset 0 0 0 1px var(--font-main);
 }
 .navigation a.active {
-  background: var(--font-green);
+  background: var(--font-main);
   color: var(--background-black);
   font-weight: 600;
 }
@@ -146,10 +146,10 @@ p {
 apod-detail {
   width: 100%;
   padding: 2.4rem;
-  box-shadow: inset 0 0 0 3px var(--font-green);
+  box-shadow: inset 0 0 0 3px var(--font-main);
 }
 .apod-card {
-  box-shadow: inset 0 0 0 1px var(--font-green);
+  box-shadow: inset 0 0 0 1px var(--font-main);
   margin-bottom: 0.8rem;
   padding: 1.2rem 1.6rem;
   display: flex;
@@ -161,7 +161,7 @@ apod-detail {
   font-weight: 600;
 }
 .apod-card.active {
-  box-shadow: inset 0 0 0 6px var(--font-green);
+  box-shadow: inset 0 0 0 6px var(--font-main);
 }
 .apod-details {
   display: grid;
@@ -230,7 +230,7 @@ rover-browser form {
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--background-black);
-  border: 1px solid var(--font-green);
+  border: 1px solid var(--font-main);
   z-index: 10;
   overflow: hidden;
 }
@@ -254,7 +254,7 @@ rover-browser form {
   font-size: 1.8rem;
   padding: 0.4rem 0.8rem;
   margin: 0;
-  background: var(--font-green);
+  background: var(--font-main);
   color: var(--background-black);
   cursor: pointer;
 }

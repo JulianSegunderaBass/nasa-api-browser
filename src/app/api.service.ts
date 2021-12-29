@@ -15,14 +15,14 @@ export class ApiService {
   private marsRoverURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/`
 
   // API Data
-  private apodData: [] = [];
-  private roverData: [] = [];
+  private apodData: APOD[] = [];
+  private roverData: roverImg[] = [];
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  getApodData(startDate: string, endDate: string): Observable<[]> {
+  getApodData(startDate: string, endDate: string): Observable<APOD[]> {
     return this.http
       .get<any>(`${this.apodURL}&start_date=${startDate}&end_date=${endDate}`)
       // Transforming fetched data
@@ -62,7 +62,6 @@ export class ApiService {
       let targetData = this.roverData.filter((rover: roverImg) => rover.id === id);
       return (targetData[0])['img_src'];
     }
-    // TODO: Edit this final return statement
     return '';
   }
 }

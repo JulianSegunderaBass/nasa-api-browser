@@ -13,7 +13,7 @@ import { APOD } from './apod.interface';
         </div>
         <div class="apod-info">
           <p class="apod-info-title">{{apod.title}}, {{apod.date | date:'longDate'}}</p>
-          <p class="apod-info-copyright">Copyright: {{apod.copyright}}</p>
+          <p class="apod-info-copyright">Copyright: {{apod.copyright ? apod.copyright : 'No Copyright Available'}}</p>
           <a class="image-detail-link" [routerLink]="[apod.id, 'full']" [queryParams]="{ view: 'apod-img' }">View Capture</a>
           <p class="apod-info-explanation">{{apod.explanation}}</p>
         </div>

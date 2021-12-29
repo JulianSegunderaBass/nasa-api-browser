@@ -33,7 +33,7 @@ import { APOD } from './apod.interface';
       <div class="apod-list">
         <div class="apod-card" *ngFor="let apod of apodData" [routerLink]="[apod.id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <p class="apod-card-title">{{apod.id}} : {{apod.title}}</p>
-          <p>{{apod.copyright}}</p>
+          <p>{{apod.copyright ? apod.copyright : 'No Copyright Available'}}</p>
           <p>{{apod.date | date:'longDate' }}</p>
         </div>
       </div>

@@ -77,6 +77,7 @@ p {
 }
 .filter-form {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1.6rem;
   font-size: 1.8rem;
@@ -116,7 +117,7 @@ p {
   margin-bottom: 0.8rem;
   font-size: 1.6rem;
 }
-.navigation a, navigation a:visited {
+.navigation a, .navigation a:visited {
   text-decoration: none;
   color: var(--font-main);
   padding: 0.8rem 1.2rem;
@@ -195,6 +196,9 @@ apod-detail {
   overflow-y: auto;
   padding-right: 0.8rem;
 }
+.image-detail-link {
+  display: none;
+}
 /* ? Mars Rover Tab */
 rover-browser form {
   margin-bottom: 1.6rem;
@@ -208,7 +212,7 @@ rover-browser form {
 }
 .rover-img-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.6rem;
 }
 .rover-img-card {
@@ -270,4 +274,67 @@ rover-browser form {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #343a40;
+}
+
+/* ? Media Queries */
+@media (max-width: 1100px) {
+  h1 {
+    font-size: 4.4rem;
+  }
+  h2 {
+    font-size: 3.6rem;
+  }
+  h3 {
+    font-size: 3rem;
+  }
+  .apod-container {
+    height: 60vh;
+  }
+  .apod-details {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+  }
+  .apod-info-explanation {
+    height: 60%;
+  }
+  .apod-img-container {
+    display: none;
+  }
+  .image-detail-link {
+    font-size: 1.6rem;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--font-main);
+    border: 2px solid var(--font-main);
+    padding: 0.2rem 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .image-detail-link:hover {
+    background: var(--font-main);
+    color: var(--background-black);
+  }
+}
+
+@media (max-width: 800px) {
+  .apod-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .apod-list {
+    height: 50vh;
+    padding-right: 1rem;
+  }
+  .apod-card {
+    flex-basis: 10rem;
+  }
+  .apod-details {
+    height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .rover-img-grid {
+    grid-template-columns: 1fr;
+  }
 }

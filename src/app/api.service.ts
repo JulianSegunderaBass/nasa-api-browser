@@ -4,12 +4,13 @@ import { Observable, of, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { APOD } from './apod/apod.interface';
 import { roverImg } from './mars-rover/rover-img.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private apiKey = 'DEMO_KEY';
+  private apiKey = environment.nasaAPIKey;
   private apodURL = `https://api.nasa.gov/planetary/apod?api_key=${this.apiKey}`;
   private marsRoverURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/`
 
@@ -62,6 +63,6 @@ export class ApiService {
       return (targetData[0])['img_src'];
     }
     // TODO: Edit this final return statement
-    return 'placeholder';
+    return '';
   }
 }

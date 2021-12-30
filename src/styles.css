@@ -117,19 +117,36 @@ p {
   margin-bottom: 0.8rem;
   font-size: 1.6rem;
 }
-.navigation a, .navigation a:visited {
+.nav-link, .nav-link:visited {
   text-decoration: none;
   color: var(--font-main);
   padding: 0.8rem 1.2rem;
   transition: all 0.4s ease;
 }
-.navigation a:hover {
+.nav-link:hover {
   box-shadow: inset 0 0 0 1px var(--font-main);
 }
-.navigation a.active {
+.nav-link.active {
   background: var(--font-main);
   color: var(--background-black);
   font-weight: 600;
+}
+#github-link {
+  margin-left: auto;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  transition: all 0.4s ease;
+  background: #dee2e6;
+  color: var(--background-black);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+#github-link svg {
+  width: 1.6rem;
+}
+#github-link:hover {
+  background: var(--font-main);
 }
 /* ? APOD Tab */
 .apod-container {
@@ -348,5 +365,12 @@ image-detail {
 @media (max-width: 500px) {
   .rover-img-grid {
     grid-template-columns: 1fr;
+  }
+  .navigation {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #github-link {
+    margin: 0;
   }
 }

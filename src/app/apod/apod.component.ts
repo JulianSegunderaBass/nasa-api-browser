@@ -81,7 +81,9 @@ export class ApodComponent implements OnInit {
 
   clearFilter() {
     let today = new Date();
-    let start = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate() - 8}`;
+    let startDate = new Date();
+    startDate.setDate(today.getDate() - 7);
+    let start = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}`;
     let end = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
     this.getApodData(start, end);
   }

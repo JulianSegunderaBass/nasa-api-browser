@@ -372,14 +372,14 @@ image-detail {
   .btn-nav {
     display: block;
     position: absolute;
-    padding: 0.2rem 0.4rem;
+    padding: 0.4rem;
     font-size: 2.4rem;
     font-weight: 600;
     top: 50%;
     right: 0;
     background: var(--font-main);
     color: var(--background-black);
-    transform: translate(100%, 50%);
+    transform: translate(100%, -50%);
   }
   .navigation {
     position: fixed;
